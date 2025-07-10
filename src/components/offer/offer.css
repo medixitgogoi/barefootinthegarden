@@ -1,0 +1,127 @@
+.offer-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .offer-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d3748; /* equivalent to Tailwind's gray-800 */
+    font-family: "Playfair Display", serif;
+  }
+  
+  .offer-subtitle {
+    color: #718096; /* Tailwind's gray-600 */
+  }
+  
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  @media (min-width: 768px) {
+    .offer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .offer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+    height: 70vh;
+  }
+  
+  @media (min-width: 768px) {
+    .offer-card {
+      padding: 3rem;
+      height: auto;
+    }
+  }
+  
+  .offer-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .offer-card-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+/* offer.css */
+
+/* ... (your existing offer.css styles) ... */
+
+.offer-button {
+  position: relative; /* Essential for positioning the pseudo-element */
+  overflow: hidden;   /* Hides the pseudo-element until it's ready to expand */
+
+  padding: 10px 20px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 1rem;
+  cursor: pointer;
+
+  /* The button itself will not have a direct background-color change */
+  /* Its border color is set by inline style, which we won't change here unless specified */
+
+  /* We'll manage the text color directly on the span */
+  background-color: transparent; /* Ensure button background is transparent by default */
+}
+
+/* Style for the text inside the button */
+.offer-button-text {
+  position: relative; /* Make the text span a positioning context for z-index if needed */
+  z-index: 2; /* Ensure the text is above both the button and the ::before pseudo-element */
+  /* The initial text color comes from the inline style of the button */
+  /* We'll transition this color directly on the span */
+  transition: color 0.3s ease; /* Smooth transition for the text color */
+  font-weight: 400;
+}
+
+
+/* Define the pseudo-element for the left-to-right fill effect */
+.offer-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0; /* Starts with 0 width */
+  height: 100%;
+  background-color: #000; /* The black fill color */
+  transition: width 0.3s ease; /* Animate the width for the fill effect */
+  z-index: 1; /* Place it behind the text (which has z-index: 2) */
+}
+
+/* Hover state for the button */
+.offer-button:hover::before,
+.offer-button:focus::before { /* Also apply on focus for accessibility */
+  width: 100%; /* Expands to full width on hover/focus */
+}
+
+/* Hover state for the text inside the button */
+.offer-button:hover .offer-button-text,
+.offer-button:focus .offer-button-text {
+  color: #fff; /* Text turns white when filled */
+  font-weight: 500;
+}
+
+/* Optional: Active state for a click effect */
+.offer-button:active {
+  transform: translateY(1px); /* A slight press effect */
+}
+  
+  .offer-image {
+    width: 100%;
+    margin-top: 2rem;
+    height: 500px;
+    object-fit: cover;
+  }
+  

@@ -1,0 +1,11 @@
+export const primary = '#07553d'
+export const secondary = '#c3a25d'
+export const tertiary = '#a88430'
+export const last = '#fef191'
+
+export const beige = '#fbece2'
+export const darkBrown = '#7a593e'
+export const brown = '#4d2b22'
+export const green = '#859276'
+export const darkGreen = '#69673a'
+export const olive = '#859276'

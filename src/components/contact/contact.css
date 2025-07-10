@@ -1,0 +1,293 @@
+/* contact.css */
+
+.contact-section {
+    display: flex;
+    min-height: 90vh; /* Adjust as needed */
+    position: relative; /* Needed for the absolute overlay */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: #333; /* Default text color */
+    font-family: "Roboto", sans-serif;
+}
+
+/* This overlay will sit on top of the background image but behind the content */
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Maintain flex layout for left/right columns */
+    z-index: 1; /* Place it above the background image */
+}
+
+.contact-left {
+    flex: 1;
+    color: white; /* Text color for the left section */
+    display: flex;
+    padding: 0;
+    box-sizing: border-box;
+    /* We'll make the left side slightly darker to ensure text readability over the image */
+    background-color: rgba(0, 0, 0, 0.4); /* Dark translucent background for left content */
+    position: relative; /* To contain its content */
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
+.contact-content {
+    /* No relative position needed here as it's not containing the image anymore */
+    display: flex; /* <-- Add this line */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 50px;
+}
+
+.contact-content h1 {
+    font-size: 2.4em;
+    margin-bottom:15px;
+    line-height: 1.2;
+}
+
+.contact-content p {
+    font-size: 1em;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contact-info-grid h3 {
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #f0f0f0; /* Slightly lighter heading for readability */
+}
+
+.contact-info-grid p,
+.contact-info-grid ul {
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-info-grid ul li {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* contact.css */
+
+.contact-right {
+    flex: 1;
+    /* Apply a semi-transparent white background to the form section */
+    /* Changed 0.9 to 0.7 to make it more transparent and background image more visible */
+    background-color: rgba(255, 255, 255, 0.7); /* White translucent background - now more transparent */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative; /* To ensure it sits above the main background */
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
+/* Rest of your CSS remains the same */
+.contact-right h2 {
+    font-size: 2em;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.contact-right p {
+    font-size: 1em;
+    margin-bottom: 50px;
+    color: #666;
+}
+
+.contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-row input,
+.contact-form textarea {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+}
+
+.form-row input:focus,
+.contact-form textarea:focus {
+    border-color: var(--darkBrown-color);
+    outline: none; /* Optional: Removes the default browser outline */
+    border-width: 1.5px;
+}
+
+.form-row.full-width {
+    width: 100%;
+    padding: 15px;
+}
+
+.contact-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-type-inquiry {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-type-inquiry h3 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.contact-location{
+    font-weight: 300;
+}
+
+.contact-location h3{
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+.contact-location p{
+    font-size: 0.8em;
+}
+
+.contact-social-media h3{
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+.contact-social-media ul li{
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.inquiry-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.inquiry-buttons button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+}
+
+.inquiry-buttons button:hover {
+    background-color: #e9e9e9;
+}
+
+.inquiry-buttons button.active {
+    background-color: var(--darkBrown-color); /* Example active color */
+    color: #fff;
+    border-color: var(-olive);
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto; /* Override flex: 1 */
+}
+
+.form-checkbox label {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--brown); /* Dark button */
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.submit-button:hover {
+    background-color: #622f08;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .contact-section {
+        flex-direction: column;
+    }
+
+    .contact-overlay {
+        flex-direction: column;
+    }
+
+    .contact-left,
+    .contact-right {
+        flex: none; /* Reset flex for column layout */
+        width: 100%;
+        padding: 30px;
+    }
+
+    .contact-left {
+        min-height: 400px; /* Adjust height for smaller screens */
+        align-items: center; /* Center content vertically for smaller screens */
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5); /* Slightly darker for better contrast on small screens */
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr; /* Stack info sections on smaller screens */
+        gap: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-content h1 {
+        font-size: 2.2em;
+    }
+
+    .contact-content p {
+        font-size: 1em;
+    }
+
+    .contact-right h2 {
+        font-size: 1.8em;
+    }
+}
