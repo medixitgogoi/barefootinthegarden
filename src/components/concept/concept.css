@@ -89,7 +89,7 @@
 .button-primary {
     align-self: flex-start; /* self-start */
     padding: 1rem 2rem; /* px-8 py-4 */
-    background-color: #2d3748; /* bg-gray-800 */
+    background-color: var(--darkBrown-color); /* bg-gray-800 */
     color: #fff; /* text-white */
     font-size: 1rem; /* text-base */
     font-weight: 600; /* font-semibold */
