@@ -19,7 +19,7 @@ import Gallery from '../../components/gallery/Gallery';
 library.add(faSearch, faUser, faShoppingBag, faArrowLeft, faArrowRight);
 // --- End Font Awesome Imports ---
 
-const HomePage = () => {
+const Home = () => {
 
   const carouselImages = [img1, img2, img3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -150,4 +150,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
