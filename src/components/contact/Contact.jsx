@@ -1,7 +1,7 @@
 // Contact.jsx
 import React, { useState } from 'react';
 import './contact.css';
-import img4 from '../../assets/images/img4.jpg'; // Ensure this path is correct
+import img4 from '/images/img4.jpg'; // Ensure this path is correct
 
 const Contact = () => {
     const [inquiryType, setInquiryType] = useState('General');

@@ -1,9 +1,9 @@
 import React from 'react';
 import './offer.css';
 
-import airbnbImage from '../../assets/images/airbnb.jpg';
-import cafeImage from '../../assets/images/cafe.jpg';
-import vendingMachinesImage from '../../assets/images/vending-machines.jpg';
+import airbnbImage from '/images/airbnb.jpg';
+import cafeImage from '/images/cafe.jpg';
+import vendingMachinesImage from '/images/vending-machines.jpg';
 
 const offerData = [
   {

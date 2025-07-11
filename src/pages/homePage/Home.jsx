@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import img1 from '../../assets/images/img6.jpg';
-import img2 from '../../assets/images/img5.jpg';
-import img3 from '../../assets/images/img4.jpg';
+import img1 from '/images/img6.jpg';
+import img2 from '/images/img5.jpg';
+import img3 from '/images/img4.jpg';
 import './Home.css'; // Import your CSS file
 // --- Font Awesome Imports ---
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faUser, faShoppingBag, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import logo from '../../assets/images/logo.png';
 import Concept from '../../components/concept/Concept';
 import Offer from '../../components/offer/Offer';
 import Contact from '../../components/contact/Contact';
@@ -95,7 +94,7 @@ const Home = () => {
         <div className="navbar-main-content">
           <div className="navbar-left">
             <Link to="/" className='logo-container'>
-              <img src={logo} alt="barefootinthegarden" className="logo-image" />
+              <img src="/images/logo.png" alt="barefootinthegarden" className="logo-image" />
               <p className='logo'>barefootinthegarden</p>
             </Link>
           </div>
