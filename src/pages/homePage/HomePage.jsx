@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import img1 from '../../assets/images/img1.jpg';
-import img2 from '../../assets/images/img2.jpg';
-import img3 from '../../assets/images/img3.jpg';
+import img1 from '../../assets/images/img6.jpg';
+import img2 from '../../assets/images/img5.jpg';
+import img3 from '../../assets/images/img4.jpg';
 import './Home.css'; // Import your CSS file
 // --- Font Awesome Imports ---
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,6 +24,14 @@ const HomePage = () => {
   const carouselImages = [img1, img2, img3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Navbar states
+  const [isScrolled, setIsScrolled] = useState(false); // Controls background/blur and justify-content
+  const [isVisible, setIsVisible] = useState(true); // Controls whether the navbar is shown/hidden
+  const [lastScrollY, setLastScrollY] = useState(0); // Tracks previous scroll position for direction
+
+  // Define the navbar height. Make sure this matches your CSS `.navbar` height.
+  const NAVBAR_HEIGHT = 110;
+
   // Function to go to the next slide
   const nextSlide = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -42,19 +50,52 @@ const HomePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 6000); // Change image every 5 seconds
+    }, 6000); // Change image every 6 seconds
     return () => clearInterval(interval);
   }, [currentImageIndex]);
 
+  // Scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Effect 1: Navbar appearance (background, blur, box-shadow) and justify-content
+      // This will activate as soon as user scrolls down from the very top.
+      if (currentScrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      // Effect 2: Show/hide navbar based on scroll direction and position
+      // Hide if scrolling down and past double the navbar's height
+      if (currentScrollY > lastScrollY && currentScrollY > NAVBAR_HEIGHT * 2) {
+        setIsVisible(false);
+      }
+      // Show if scrolling up, or if at or near the top of the page (within double navbar height)
+      else if (currentScrollY < lastScrollY || currentScrollY <= NAVBAR_HEIGHT * 2) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]); // Dependency array includes lastScrollY to ensure the effect re-runs when scroll position updates
+
   return (
     <div className="home-page">
-      {/* Dark overlay for navbar visibility */}
-      <div className="navbar-overlay">
-        {/* Navbar */}
-        <nav className="navbar">
+      {/* Navbar - Apply isScrolled and isVisible/hidden classes dynamically */}
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
+        <div className="navbar-main-content">
           <div className="navbar-left">
             <Link to="/" className='logo-container'>
-              <img src={logo} alt="barefootinthegarden" className="logo-image" /> {/* Added img tag */}
+              <img src={logo} alt="barefootinthegarden" className="logo-image" />
               <p className='logo'>barefootinthegarden</p>
             </Link>
           </div>
@@ -64,8 +105,8 @@ const HomePage = () => {
             <li><Link to="/" className="nav-link">Services</Link></li>
             <li><Link to="/" className="nav-link">Contact us</Link></li>
           </ul>
-        </nav>
-      </div>
+        </div>
+      </nav>
 
       {/* Hero Section / Carousel */}
       <div className="hero-section" style={{ backgroundImage: `url(${carouselImages[currentImageIndex]})` }}>
@@ -94,7 +135,6 @@ const HomePage = () => {
             ))}
           </div>
           <div className="carousel-arrows">
-            {/* Updated carousel arrow icons */}
             <button onClick={prevSlide} className="arrow-button"><FontAwesomeIcon icon="arrow-left" /></button>
             <button onClick={nextSlide} className="arrow-button"><FontAwesomeIcon icon="arrow-right" /></button>
           </div>

@@ -1,19 +1,18 @@
 // Contact.jsx
 import React, { useState } from 'react';
 import './contact.css';
-import img2 from '../../assets/images/img2.jpg'; // Ensure this path is correct
+import img4 from '../../assets/images/img4.jpg'; // Ensure this path is correct
 
 const Contact = () => {
     const [inquiryType, setInquiryType] = useState('General');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic here
         console.log('Form submitted!');
     };
 
     return (
-        <section className="contact-section" style={{ backgroundImage: `url(${img2})` }}> {/* Apply background image here */}
+        <section className="contact-section" style={{ backgroundImage: `url(${img4})` }}> {/* Apply background image here */}
             <div className="contact-overlay"> {/* This div will create a consistent overlay for the whole section */}
                 <div className="contact-left">
                     <div className="contact-content">
