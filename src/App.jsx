@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
 import ServicePage from './pages/servicePage/ServicePage';
 import About from './pages/aboutPage/About';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import HomePage from './pages/HomePage/HomePage';
 
 const router = createBrowserRouter([
   {
