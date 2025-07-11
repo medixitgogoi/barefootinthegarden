@@ -26,8 +26,8 @@ const Concept = () => {
                     loop
                     muted
                     playsInline
-                        src="/src/assets/videos/concept.mp4"
-                        onError={(e) => {
+                    src="/videos/concept.mp4"
+                    onError={(e) => {
                             e.currentTarget.src = "https://placehold.co/640x360/E0E7FF/4338CA?text=Video+Not+Found";
                             e.currentTarget.title = "Video could not be loaded. Placeholder shown.";
                             console.error("Error loading video:", e);
