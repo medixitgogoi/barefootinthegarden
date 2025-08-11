@@ -1,0 +1,303 @@
+/*
+  about.css
+  Styling for the About Us page of Barefoot in the Garden.
+  This file relies on the color variables defined in a global css file like index.css.
+*/
+
+/* General Body Styles - Applied via index.css but good for context */
+/*
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fffdfc;
+  color: var(--brown);
+  line-height: 1.7;
+}
+*/
+
+/* --- MODIFIED --- */
+/* Main Container */
+.about-container {
+    width: 100%;
+    margin: 0 auto;
+    /* Adjusted padding: top value increased to make space for a navbar */
+    padding: 8rem 2rem 4rem; 
+    box-sizing: border-box;
+    overflow: hidden; /* Changed from overflow-x to contain border-radius */
+    border-radius: 15px; /* Added border-radius for the whole container */
+  }
+  
+  /* Header Section */
+  .about-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .about-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+  }
+  
+  .about-header .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--darkBrown-color);
+  }
+  
+  /* General Section Layout */
+  .about-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+  
+  /* Alternating layout for sections */
+  .about-section.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .about-section .text-content {
+    flex: 1;
+  }
+  
+  .about-section .image-content {
+    flex: 1;
+  }
+  
+  .about-section h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--olive);
+    margin-bottom: 1rem;
+  }
+  
+  .about-section p {
+    font-size: 1.1rem;
+    color: var(--darkBrown-color);
+  }
+  
+  .about-section .image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(77, 43, 34, 0.1);
+    object-fit: cover;
+  }
+  
+  /* Experience Section */
+  .experience-section {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  
+  .experience-section h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--olive);
+    margin-bottom: 3rem;
+  }
+  
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .experience-card {
+    background-color: var(--beige);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(77, 43, 34, 0.15);
+      cursor: pointer;
+  }
+  
+  .experience-card img {
+    width: 100%;
+    height: 250px; /* Fixed height for uniform look */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .experience-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+  }
+  
+  .experience-card p {
+    font-size: 1rem;
+    color: var(--darkBrown-color);
+    line-height: 1.6;
+    flex-grow: 1; /* Allows paragraphs to take up remaining space */
+  }
+  
+  /* --- MODIFIED & IMPROVED FOOTER SECTION --- */
+  .about-footer {
+    background-color: var(--darkBrown-color);
+    color: var(--beige);
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative; /* Needed for the pseudo-element background */
+    overflow: hidden; /* Ensures the pseudo-element respects border-radius */
+  }
+
+  /* --- NEW ---: Pseudo-element for the background image */
+  .about-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/about-1.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1; /* Low opacity for a subtle effect */
+    z-index: 0; /* Places the image behind the content */
+  }
+
+  /* --- MODIFIED ---: Ensure content is on top of the background */
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative; /* To stack on top of the ::before pseudo-element */
+    z-index: 1;
+  }
+  
+  .about-footer h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  .about-footer .footer-description {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.7;
+  }
+
+  .footer-cta {
+    display: inline-block;
+    background-color: var(--accent-yellow);
+    color: var(--darkBrown-color);
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-cta:hover {
+    background-color: var(--accent-yellow-hover);
+    transform: scale(1.05);
+  }
+
+  .footer-socials {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .social-icon {
+    color: #a3a3a3;
+    transition: color 0.3s ease;
+  }
+
+  .social-icon:hover {
+    color: #ffffff;
+  }
+
+  .footer-closing-text {
+    margin-top: 3rem;
+    font-size: 1.125rem;
+    color: #a3a3a3;
+  }
+
+  .footer-closing-text strong {
+    font-weight: 600;
+    color: var(--beige);
+  }
+  
+  
+  /* --- Responsive Design --- */
+  
+  /* Tablet (max-width: 992px) */
+  @media (max-width: 992px) {
+    .about-section {
+      flex-direction: column !important;
+      gap: 2.5rem;
+      text-align: center;
+    }
+  
+    .about-section .text-content {
+      max-width: 600px; /* Constrain text width for readability */
+    }
+  
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    
+    .experience-card {
+      text-align: center;
+    }
+  }
+  
+  /* Mobile (max-width: 576px) */
+  @media (max-width: 576px) {
+    .about-container {
+      /* Adjusted padding for mobile to account for navbar */
+      padding: 6rem 1rem 2rem;
+    }
+  
+    .about-header h1 {
+      font-size: 2.25rem;
+    }
+  
+    .about-header .subtitle {
+      font-size: 1rem;
+    }
+    
+    .about-section h2,
+    .experience-section h2 {
+      font-size: 2rem;
+    }
+  
+    .about-section {
+        margin-bottom: 4rem;
+    }
+  
+    .experience-card {
+        padding: 1.5rem;
+    }
+  
+    .experience-card img {
+        height: 200px;
+    }
+  
+    .about-footer {
+      padding: 3rem 1.5rem;
+    }
+
+    .about-footer p {
+        font-size: 1rem;
+    }
+  }

@@ -22,16 +22,14 @@
   --darkBrown-color: #7a593e;
   --brown: #4d2b22;
   --olive: #859276;
-  --green: #859276;
-  --darkGreen: #69673a;
-
+  --accent-yellow: #f59e0b;
+  --accent-yellow-hover: #fbbf24;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  /* min-width: 320px; */
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background-color: #fffdfc;

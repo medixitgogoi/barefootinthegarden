@@ -3,33 +3,25 @@ import { useState, useEffect } from 'react';
 import img1 from '/images/img6.jpg';
 import img2 from '/images/img5.jpg';
 import img3 from '/images/img4.jpg';
-import './Home.css'; // Import your CSS file
+import './home.css'; // Your styles for the home page content
 // --- Font Awesome Imports ---
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faUser, faShoppingBag, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+// Removed unused icons, keeping only those for the carousel
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Concept from '../../components/concept/Concept';
 import Offer from '../../components/offer/Offer';
 import Contact from '../../components/contact/Contact';
 import Footer from '../../components/footer/Footer';
 import Gallery from '../../components/gallery/Gallery';
 
-// Add the imported icons to the library
-library.add(faSearch, faUser, faShoppingBag, faArrowLeft, faArrowRight);
+// Add only the necessary icons to the library
+library.add(faArrowLeft, faArrowRight);
 // --- End Font Awesome Imports ---
 
 const Home = () => {
-
   const carouselImages = [img1, img2, img3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Navbar states
-  const [isScrolled, setIsScrolled] = useState(false); // Controls background/blur and justify-content
-  const [isVisible, setIsVisible] = useState(true); // Controls whether the navbar is shown/hidden
-  const [lastScrollY, setLastScrollY] = useState(0); // Tracks previous scroll position for direction
-
-  // Define the navbar height. Make sure this matches your CSS `.navbar` height.
-  const NAVBAR_HEIGHT = 110;
 
   // Function to go to the next slide
   const nextSlide = () => {
@@ -51,61 +43,11 @@ const Home = () => {
       nextSlide();
     }, 6000); // Change image every 6 seconds
     return () => clearInterval(interval);
-  }, [currentImageIndex]);
-
-  // Scroll effect for navbar
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Effect 1: Navbar appearance (background, blur, box-shadow) and justify-content
-      // This will activate as soon as user scrolls down from the very top.
-      if (currentScrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // Effect 2: Show/hide navbar based on scroll direction and position
-      // Hide if scrolling down and past double the navbar's height
-      if (currentScrollY > lastScrollY && currentScrollY > NAVBAR_HEIGHT * 2) {
-        setIsVisible(false);
-      }
-      // Show if scrolling up, or if at or near the top of the page (within double navbar height)
-      else if (currentScrollY < lastScrollY || currentScrollY <= NAVBAR_HEIGHT * 2) {
-        setIsVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [lastScrollY]); // Dependency array includes lastScrollY to ensure the effect re-runs when scroll position updates
+  }, []); // Dependency array is empty to run only once
 
   return (
     <div className="home-page">
-      {/* Navbar - Apply isScrolled and isVisible/hidden classes dynamically */}
-      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
-        <div className="navbar-main-content">
-          <div className="navbar-left">
-            <Link to="/" className='logo-container'>
-              <img src="/images/logo.png" alt="barefootinthegarden" className="logo-image" />
-              <p className='logo'>barefootinthegarden</p>
-            </Link>
-          </div>
-          <ul className="nav-list">
-            <li><Link to="/" className="nav-link">Home</Link></li>
-            <li><Link to="/" className="nav-link">About Us</Link></li>
-            <li><Link to="/" className="nav-link">Services</Link></li>
-            <li><Link to="/" className="nav-link">Contact us</Link></li>
-          </ul>
-        </div>
-      </nav>
+      {/* Navbar has been removed and placed in the Layout component */}
 
       {/* Hero Section / Carousel */}
       <div className="hero-section" style={{ backgroundImage: `url(${carouselImages[currentImageIndex]})` }}>
@@ -140,11 +82,11 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Other page sections */}
       <Concept />
       <Gallery />
       <Offer />
       <Contact />
-      <Footer />
     </div>
   );
 };
