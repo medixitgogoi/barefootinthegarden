@@ -100,8 +100,8 @@ const About = () => {
           <p className="footer-description">
             Your journey into thoughtful, sustainable design begins here. Schedule a visit to walk through our spaces, or book a stay to fully immerse yourself.
           </p>
-          <a href="#contact" className="footer-cta">
-            Schedule a Visit
+          <a href="/contact" className="footer-cta">
+            Enquire now
           </a>
           <div className="footer-socials">
             <SocialIcon href="https://facebook.com">

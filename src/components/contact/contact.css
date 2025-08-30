@@ -1,76 +1,77 @@
-/* contact.css */
+/* --- Contact Section --- */
 
 .contact-section {
     display: flex;
-    min-height: 90vh; /* Adjust as needed */
-    position: relative; /* Needed for the absolute overlay */
-    background-size: cover; /* Cover the entire section */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    color: #333; /* Default text color */
+    min-height: 90vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Creates a parallax-like effect */
+    color: #333;
     font-family: "Roboto", sans-serif;
 }
 
-/* This overlay will sit on top of the background image but behind the content */
 .contact-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex; /* Maintain flex layout for left/right columns */
-    z-index: 1; /* Place it above the background image */
+    display: flex;
+    z-index: 1;
 }
 
 .contact-left {
     flex: 1;
-    color: white; /* Text color for the left section */
+    color: white;
     display: flex;
-    padding: 0;
+    align-items: center; /* Vertically center the content */
     box-sizing: border-box;
-    /* We'll make the left side slightly darker to ensure text readability over the image */
-    background-color: rgba(0, 0, 0, 0.4); /* Dark translucent background for left content */
-    position: relative; /* To contain its content */
-    z-index: 2; /* Ensure content is above the overlay */
+    background-color: rgba(0, 0, 0, 0.45); /* Slightly darker for better contrast */
+    backdrop-filter: blur(4px); /* Adds a blur effect to the background */
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2;
 }
 
 .contact-content {
-    /* No relative position needed here as it's not containing the image anymore */
-    display: flex; /* <-- Add this line */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     padding: 50px;
+    gap: 4rem; /* Add space between heading and info grid */
 }
 
 .contact-content h1 {
-    font-size: 2.4em;
-    margin-bottom:15px;
+    font-size: 2.5em;
+    margin-bottom: 15px;
     line-height: 1.2;
+    font-family: "Playfair Display", serif;
 }
 
 .contact-content p {
     font-size: 1em;
-    margin-bottom: 40px;
     font-weight: 300;
+    max-width: 500px; /* Constrain line length for readability */
 }
 
 .contact-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 35px;
 }
 
 .contact-info-grid h3 {
     font-weight: 500;
-    font-size: 1.5em;
-    margin-bottom: 5px;
-    color: #f0f0f0; /* Slightly lighter heading for readability */
+    font-size: 1.2em; /* Adjusted size */
+    margin-bottom: 10px;
+    color: #f0f0f0;
 }
 
 .contact-info-grid p,
 .contact-info-grid ul {
-    font-size: 1em;
+    font-size: 0.95em;
     font-weight: 300;
     line-height: 1.6;
     margin: 0;
@@ -81,24 +82,25 @@
 .contact-info-grid ul li {
     margin-bottom: 5px;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-/* contact.css */
+.contact-info-grid ul li:hover {
+    color: #aaa; /* Example hover effect */
+}
 
 .contact-right {
     flex: 1;
-    /* Apply a semi-transparent white background to the form section */
-    /* Changed 0.9 to 0.7 to make it more transparent and background image more visible */
-    background-color: rgba(255, 255, 255, 0.7); /* White translucent background - now more transparent */
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque for form clarity */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative; /* To ensure it sits above the main background */
-    z-index: 2; /* Ensure content is above the overlay */
+    z-index: 2;
 }
 
-/* Rest of your CSS remains the same */
 .contact-right h2 {
     font-size: 2em;
     margin-bottom: 5px;
@@ -107,50 +109,55 @@
 
 .contact-right p {
     font-size: 1em;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     color: #666;
 }
 
 .contact-form {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    /* gap: 20px; */
 }
 
 .form-row {
     display: flex;
-    gap: 20px;
+    /* gap: 20px; */
     width: 100%;
+}
+
+.form-row.full-width {
+    width: 100%;
+    margin-top: 20px;
 }
 
 .form-row input,
 .contact-form textarea {
     flex: 1;
     padding: 15px;
-    border: 1px solid #333;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Slightly rounded corners */
     font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
 }
 
 .form-row input:focus,
 .contact-form textarea:focus {
     border-color: var(--darkBrown-color);
-    outline: none; /* Optional: Removes the default browser outline */
-    border-width: 1.5px;
-}
-
-.form-row.full-width {
-    width: 100%;
-    padding: 15px;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 93, 82, 0.2);
 }
 
 .contact-form textarea {
-    min-height: 100px;
+    min-height: 120px;
     resize: vertical;
+    width: 100%; /* Ensure textarea takes full width */
 }
 
 .form-type-inquiry {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .form-type-inquiry h3 {
@@ -158,29 +165,6 @@
     margin-bottom: 15px;
     color: #333;
     font-weight: 500;
-}
-
-.contact-location{
-    font-weight: 300;
-}
-
-.contact-location h3{
-    font-weight: 500;
-    font-size: 1.5em;
-}
-
-.contact-location p{
-    font-size: 0.8em;
-}
-
-.contact-social-media h3{
-    font-weight: 500;
-    font-size: 1.5em;
-}
-
-.contact-social-media ul li{
-    font-size: 0.8em;
-    font-weight: 300;
 }
 
 .inquiry-buttons {
@@ -193,48 +177,33 @@
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     font-size: 0.95em;
     transition: all 0.3s ease;
 }
 
 .inquiry-buttons button:hover {
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
+    border-color: #bbb;
 }
 
 .inquiry-buttons button.active {
-    background-color: var(--darkBrown-color); /* Example active color */
+    background-color: var(--darkBrown-color);
     color: #fff;
-    border-color: var(-olive);
-}
-
-.form-checkbox {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.form-checkbox input[type="checkbox"] {
-    margin-right: 10px;
-    width: auto; /* Override flex: 1 */
-}
-
-.form-checkbox label {
-    font-size: 0.9em;
-    color: #555;
+    border-color: var(--darkBrown-color);
 }
 
 .submit-button {
     width: 100%;
     padding: 15px;
-    background-color: var(--brown); /* Dark button */
+    background-color: var(--brown);
     color: white;
     border: none;
+    border-radius: 4px;
     font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     margin-top: 20px;
     font-weight: 500;
 }
@@ -243,51 +212,54 @@
     background-color: #622f08;
 }
 
-/* Responsive adjustments */
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
     .contact-section {
-        flex-direction: column;
+        background-image: none; /* Remove background image on tablet/mobile */
+        background-color: #fff; /* Change background to white to match the form */
+        background-attachment: scroll; /* Reset parallax effect */
     }
 
     .contact-overlay {
+        position: static; /* Reset overlay positioning */
         flex-direction: column;
     }
 
-    .contact-left,
-    .contact-right {
-        flex: none; /* Reset flex for column layout */
-        width: 100%;
-        padding: 30px;
-    }
-
+    /* --- CHANGE IS HERE --- */
     .contact-left {
-        min-height: 400px; /* Adjust height for smaller screens */
-        align-items: center; /* Center content vertically for smaller screens */
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.5); /* Slightly darker for better contrast on small screens */
+        display: none; /* Hide the entire left section */
     }
 
-    .contact-info-grid {
-        grid-template-columns: 1fr; /* Stack info sections on smaller screens */
-        gap: 20px;
+    .contact-right {
+        flex: none;
+        width: 100%;
+        padding: 40px;
+        /* Reset backdrop-filter as there's no background image */
+        backdrop-filter: none; 
+        -webkit-backdrop-filter: none;
+        background-color: #fff; /* Ensure background is solid white */
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        min-height: auto; /* Allow height to be determined by content */
+    }
+
+    .contact-right {
+        padding: 40px 25px;
+    }
+
+    .contact-right h2 {
+        font-size: 1.8em;
     }
 
     .form-row {
         flex-direction: column;
         gap: 15px;
-    }
-}
-
-@media (max-width: 768px) {
-    .contact-content h1 {
-        font-size: 2.2em;
-    }
-
-    .contact-content p {
-        font-size: 1em;
-    }
-
-    .contact-right h2 {
-        font-size: 1.8em;
     }
 }

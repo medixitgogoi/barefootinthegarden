@@ -46,23 +46,23 @@ const Home = () => {
   }, []); // Dependency array is empty to run only once
 
   return (
-    <div className="home-page">
+    <div className="homePage">
       {/* Navbar has been removed and placed in the Layout component */}
 
       {/* Hero Section / Carousel */}
-      <div className="hero-section" style={{ backgroundImage: `url(${carouselImages[currentImageIndex]})` }}>
-        <div className="hero-content">
-          <h1 className="hero-title">New Zero Track Pro Recessed</h1>
-          <p className="hero-description">
+      <div className="heroSection" style={{ backgroundImage: `url(${carouselImages[currentImageIndex]})` }}>
+        <div className="heroContent">
+          <h1 className="heroTitle">New Zero Track Pro Recessed</h1>
+          <p className="heroDescription">
             Designed to integrate smoothly into the ceiling and preserve the
             purity of architectural lines.
           </p>
-          <Link to="/discover-more" className="discover-more-button">DISCOVER MORE</Link>
+          <a href="https://craftedcomfort.in" className="discoverMoreButton">DISCOVER MORE</a>
         </div>
 
         {/* Carousel Navigation */}
-        <div className="carousel-nav">
-          <div className="carousel-dots">
+        <div className="carouselNav">
+          <div className="carouselDots">
             {carouselImages.map((_, index) => (
               <span
                 key={index}
@@ -75,9 +75,9 @@ const Home = () => {
               ></span>
             ))}
           </div>
-          <div className="carousel-arrows">
-            <button onClick={prevSlide} className="arrow-button"><FontAwesomeIcon icon="arrow-left" /></button>
-            <button onClick={nextSlide} className="arrow-button"><FontAwesomeIcon icon="arrow-right" /></button>
+          <div className="carouselArrows">
+            <button onClick={prevSlide} className="arrowButton"><FontAwesomeIcon icon="arrow-left" /></button>
+            <button onClick={nextSlide} className="arrowButton"><FontAwesomeIcon icon="arrow-right" /></button>
           </div>
         </div>
       </div>

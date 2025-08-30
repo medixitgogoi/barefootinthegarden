@@ -1,127 +1,143 @@
+/* --- Offer Section --- */
+.offer-container {
+  width: 100%;
+  padding-top: 4rem; /* Add vertical padding */
+}
+
 .offer-header {
-    width: 100%;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .offer-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2d3748; /* equivalent to Tailwind's gray-800 */
-    font-family: "Playfair Display", serif;
-  }
-  
-  .offer-subtitle {
-    color: #718096; /* Tailwind's gray-600 */
-  }
-  
-  .offer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  
-  @media (min-width: 768px) {
-    .offer-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  .offer-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    padding: 2rem;
-    height: 70vh;
-  }
-  
-  @media (min-width: 768px) {
-    .offer-card {
-      padding: 3rem;
-      height: auto;
-    }
-  }
-  
-  .offer-card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
-  
-  @media (min-width: 768px) {
-    .offer-card-title {
-      font-size: 2.5rem;
-    }
-  }
-  
-/* offer.css */
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1.5rem; /* Add horizontal padding for mobile */
+}
 
-/* ... (your existing offer.css styles) ... */
+.offer-title {
+  font-size: 2.2rem; /* Mobile first font size */
+  font-weight: 700;
+  color: #2d3748;
+  font-family: "Playfair Display", serif;
+}
 
+.offer-subtitle {
+  font-size: 1rem;
+  color: #718096;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  width: 100%;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  min-height: 60vh; /* Ensure a minimum height on mobile */
+}
+
+.offer-card-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.offer-image-wrapper {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.offer-image {
+  width: 100%;
+  height: 250px; /* Fixed height for consistency on mobile */
+  object-fit: cover;
+  border-radius: 8px; /* Add a slight rounding to images */
+}
+
+/* --- Button Styles --- */
 .offer-button {
-  position: relative; /* Essential for positioning the pseudo-element */
-  overflow: hidden;   /* Hides the pseudo-element until it's ready to expand */
-
-  padding: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block; /* Important for proper layout */
+  padding: 12px 24px;
   border-width: 1px;
   border-style: solid;
   font-size: 1rem;
   cursor: pointer;
-
-  /* The button itself will not have a direct background-color change */
-  /* Its border color is set by inline style, which we won't change here unless specified */
-
-  /* We'll manage the text color directly on the span */
-  background-color: transparent; /* Ensure button background is transparent by default */
+  background-color: transparent;
+  transition: color 0.3s ease;
 }
 
-/* Style for the text inside the button */
 .offer-button-text {
-  position: relative; /* Make the text span a positioning context for z-index if needed */
-  z-index: 2; /* Ensure the text is above both the button and the ::before pseudo-element */
-  /* The initial text color comes from the inline style of the button */
-  /* We'll transition this color directly on the span */
-  transition: color 0.3s ease; /* Smooth transition for the text color */
-  font-weight: 400;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+  font-weight: 500;
 }
 
-
-/* Define the pseudo-element for the left-to-right fill effect */
 .offer-button::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 0; /* Starts with 0 width */
+  width: 0;
   height: 100%;
-  background-color: #000; /* The black fill color */
-  transition: width 0.3s ease; /* Animate the width for the fill effect */
-  z-index: 1; /* Place it behind the text (which has z-index: 2) */
+  background-color: #000;
+  transition: width 0.4s ease; /* Slightly slower for a smoother effect */
+  z-index: 1;
 }
 
-/* Hover state for the button */
 .offer-button:hover::before,
-.offer-button:focus::before { /* Also apply on focus for accessibility */
-  width: 100%; /* Expands to full width on hover/focus */
+.offer-button:focus::before {
+  width: 100%;
 }
 
-/* Hover state for the text inside the button */
 .offer-button:hover .offer-button-text,
 .offer-button:focus .offer-button-text {
-  color: #fff; /* Text turns white when filled */
-  font-weight: 500;
+  color: #fff;
 }
 
-/* Optional: Active state for a click effect */
 .offer-button:active {
-  transform: translateY(1px); /* A slight press effect */
+  transform: translateY(1px);
 }
-  
-  .offer-image {
-    width: 100%;
-    margin-top: 2rem;
-    height: 500px;
-    object-fit: cover;
+
+
+/* --- Tablet and Desktop Styles --- */
+@media (min-width: 768px) {
+  .offer-grid {
+      /* Create a 2x2 grid layout */
+      grid-template-columns: repeat(2, 1fr);
   }
-  
+
+  .offer-card {
+      padding: 3rem;
+      min-height: 450px; /* Adjust height for larger screens */
+      height: 70vh;
+  }
+
+  .offer-title {
+      font-size: 2.5rem;
+  }
+
+  .offer-card-title {
+      font-size: 2.2rem;
+  }
+
+  .offer-image {
+      height: 300px; /* Increase image height */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* For larger screens, you might want a 4-column layout if space permits */
+  /* Or keep the 2x2 grid but with more padding */
+  .offer-container {
+      padding: 5rem 2rem;
+  }
+
+  .offer-card {
+      padding: 4rem;
+  }
+}

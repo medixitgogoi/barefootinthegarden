@@ -1,241 +1,228 @@
-.home-page {
-    width: 100vw;
-    /* height: 100vh; */ /* This might cause issues if content is taller than viewport */
-    /* overflow: hidden; */ /* Removing this to allow normal scrolling */
-    position: relative;
-  }
-  
-  /* The navbar is fixed, so it will naturally overlay content */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 50px;
-    margin: 0 auto;
-    background-color: rgba(217, 208, 200, 0.8); /* Semi-transparent #fbece2 background when scrolled, with blur */
-    backdrop-filter: blur(0px); /* Initial no blur */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Apply dark shadow initially */
-    transition: background-color 0.6s ease, backdrop-filter 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease-out;
-    height: 110px;
-  }
-  
-  /* New class applied when scrolled down */
-  .navbar.scrolled {
-    background-color: rgba(197, 182, 169, 0.8); /* Semi-transparent #fbece2 background when scrolled, with blur */
-    backdrop-filter: blur(8px); /* Apply blur effect when scrolled */
-    /* The box-shadow from .navbar will persist, or you can re-specify if you want a different one here */
-  }
-  
-  /* Controls the visibility of the navbar */
-  .navbar.hidden {
-    transform: translateY(-100%);
-  }
-  
-  .navbar.visible {
-    transform: translateY(0);
-  }
-  
-  .navbar-main-content {
-    display: flex;
-    justify-content: center; /* Initial state: centered */
-    align-items: center;
-    width: 100%;
-    gap: 80px;
-    padding: 0 20px;
-    transition: justify-content 0.3s ease;
-  }
-  
-  /* When the navbar is scrolled, justify-content changes to space-between */
-  .navbar.scrolled .navbar-main-content {
-    justify-content: space-between;
-  }
-  
-  .navbar-left .logo-image {
-    height: 120px;
-    margin-right: 4px;
-  }
-  
-  .tagline {
-    font-size: 12px;
-    margin-bottom: 5px;
-    opacity: 0.8;
-  }
-  
-  .navbar-left .logo {
-    /* font-family: "Lobster", sans-serif; */
-    font-weight: 600;
-    font-style: normal;
-    font-size: 2.2rem;
-    color: var(--darkGreen);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  
-  .logo-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-link {
-    color: #000;
-    text-decoration: none;
-    font-size: 16px;
-    position: relative;
-    transition: color 0.3s ease;
-    padding-bottom: 5px;
-  }
-  
-  .nav-link:hover {
-    color: var(--brown);
-    font-weight: 500;
-  }
-  
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--darkBrown-color);
-    /* background-color: #fff; */
-    transition: width 0.3s ease-out;
-  }
-  
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  
-  .global-en {
-    font-size: 14px;
-    opacity: 0.9;
-  }
-  
-  .icon {
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  /* Hero Section should start from the very top */
-  .hero-section {
-    width: 100vw; /* Use 100vw to ensure it fills the viewport width */
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    transition: background-image 0.5s ease-in-out;
-    /* Ensure it starts at the top, if not already. Remove any margin-top if present. */
-    margin-top: 0;
-    padding-top: 0;
-  }
-  
-  .hero-content {
-    max-width: 800px;
-    text-align: left;
-    /* Consider using a solid color with opacity for better readability on varied images */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-    padding: 100px 90px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #fff; /* Ensure text color is visible against the overlay */
-  }
-  
-  .hero-title {
-    font-weight: 700;
-    font-size: 4.5em;
-    margin-bottom: 20px;
-    line-height: 1.1;
-    color: #fff;
-  }
-  
-  .hero-description {
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 40px;
-    opacity: 0.9;
-    font-weight: 600;
-    font-family: "Montserrat", sans-serif;
-    color: var(--beige);
-  }
-  
-  .discover-more-button {
-    background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
-    padding: 15px 30px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    width: max-content;
-  }
-  
-  .discover-more-button:hover {
-    background-color: #fff;
-    color: #000;
-  }
-  
-  .carousel-nav {
-    position: absolute;
-    bottom: 50px;
-    width: calc(100% - 100px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 90px;
-    box-sizing: border-box;
-  }
-  
-  .carousel-dots {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .dot {
-    height: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: width 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .carousel-arrows {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .arrow-button {
-    background-color: transparent;
-    color: #fff; /* Changed from '#fff' to 'white' for direct CSS readability */
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .arrow-button:hover {
-    color: var(--darkBrown-color); /* Assuming --darkBrown-color is defined elsewhere */
-  }
+.homePage {
+  width: 100vw;
+  position: relative;
+}
+
+/* Hero Section should start from the very top */
+.heroSection {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  transition: background-image 0.5s ease-in-out;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* --- CHANGE IS HERE: Added a pseudo-element for the overlay --- */
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* The overlay still covers 100% width to allow the gradient to fade across */
+  height: 100%;
+  /* This creates the dark overlay that fades out at 70% */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1; /* Place overlay behind the content */
+}
+
+.heroContent {
+  position: relative; /* Ensure content is on top of the overlay */
+  z-index: 2; /* Higher z-index than the overlay */
+  padding: 100px 90px;
+  height: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff; /* Ensure text color is visible against the overlay */
+}
+
+.heroTitle {
+  font-weight: 700;
+  font-size: 4.5em;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.heroDescription {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  font-weight: 600;
+  color: var(--beige);
+}
+
+.discoverMoreButton {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: max-content;
+}
+
+.discoverMoreButton:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.carouselNav {
+  position: absolute;
+  bottom: 50px;
+  width: calc(100% - 180px); /* Adjusted width to match padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 90px;
+  box-sizing: border-box;
+  z-index: 2; /* Ensure nav is on top of overlay */
+}
+
+.carouselDots {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  height: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.carouselArrows {
+  display: flex;
+  gap: 20px;
+}
+
+.arrowButton {
+  background-color: transparent;
+  color: #fff;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+}
+
+.arrowButton:hover {
+  color: var(--darkBrown-color);
+}
+
+/* --- Responsive Styles --- */
+
+/* == Tablet Styles (Medium Screens) == */
+@media (max-width: 992px) {
+.heroContent {
+  padding: 80px 60px;
+  max-width: 700px;
+}
+
+.heroTitle {
+  font-size: 3.8em;
+}
+
+.heroDescription {
+  font-size: 1.1em;
+}
+
+.carouselNav {
+  padding: 0 60px;
+  width: calc(100% - 120px);
+  bottom: 40px;
+}
+}
+
+
+/* == Mobile Styles (Small Screens) == */
+@media (max-width: 768px) {
+.heroSection {
+  justify-content: center; /* Center the content box horizontally */
+  align-items: center;
+}
+
+.heroSection::before {
+  /* On mobile, it's often better for the overlay to cover the full width
+     with a consistent opacity for readability, as text is often centered. */
+  width: 100%; /* Ensure full width coverage on mobile */
+  background: rgba(0, 0, 0, 0.5); /* Keep solid color for mobile */
+}
+
+.heroContent {
+  text-align: center;
+  padding: 40px 25px;
+  max-width: 90%;
+  height: auto; /* Let content define its height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroTitle {
+  font-size: 2.6em; /* Drastically reduce font size for mobile */
+}
+
+.heroDescription {
+  font-size: 1em;
+  margin-bottom: 35px;
+}
+
+.discoverMoreButton {
+  margin: 0; /* Button is centered by the parent flex container */
+}
+
+.carouselNav {
+  bottom: 30px;
+  padding: 0 25px;
+  width: calc(100% - 50px);
+}
+
+.arrowButton {
+  font-size: 24px;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+}
+}
+
+/* == Small Mobile Styles (e.g., iPhone SE) == */
+@media (max-width: 480px) {
+.heroTitle {
+  font-size: 2.1em; /* Further font size reduction */
+  line-height: 1.2;
+}
+
+.heroDescription {
+  font-size: 0.95em;
+}
+
+.discoverMoreButton {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+.carouselArrows {
+  display: none;
+}
+
+.carouselNav {
+  justify-content: center;
+}
+}

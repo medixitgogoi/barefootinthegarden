@@ -5,51 +5,47 @@ import { FaTwitter, FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-left">
-        <div className="footer-logo-name">
-          <img src={logo} alt="barefootinthegarden logo" className="footer-logo" />
-          <p className="footer-brand">barefootinthegarden</p>
+    <footer className="redesigned-footer">
+      <div className="footer-main-content">
+        {/* Column 1: Brand Info */}
+        <div className="footer-column brand-info">
+          <div className="footer-logo-container">
+            <img src={logo} alt="Barefoot in the Garden Logo" className="footer-logo-img" onError={(e) => e.currentTarget.src = 'https://placehold.co/100x100/E0E7FF/4338CA?text=Logo'} />
+            <span className="footer-brand-name">barefootinthegarden</span>
+          </div>
+          <p className="footer-tagline">
+            A living, breathing reflection of modern urban life, where every detail is an experience.
+          </p>
         </div>
-        <div className="footer-info">
-          <p className="footer-copy">© Copyright 2025</p>
-          <p className="footer-tagline">BAREFOOTINTHEGARDEN. All Rights Reserved.</p>
+
+        {/* Column 2: Services */}
+        <div className="footer-column links">
+          <h3 className="footer-heading">Services</h3>
+          <a href="/stay">The Stay</a>
+          <a href="/cafe">The Cafe</a>
+          <a href="/vend">Vending Machines</a>
+          <a href="https://craftedcomfort.in/" target="_blank" rel="noopener noreferrer">The Living Showroom</a>
+        </div>
+
+        {/* Column 3: Company */}
+        <div className="footer-column links">
+          <h3 className="footer-heading">Company</h3>
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact</a>
+          {/* <a href="#">Careers</a>
+          <a href="#">Press</a> */}
         </div>
       </div>
 
-      <div className="footer-right">
-        <div className="footer-links">
-            <div className="link-columns">
-            <div className="link-column">
-                <a href="/">Home</a>
-                <a href="/contact">Contact us</a>
-            </div>
-            <div className="link-column">
-                <a href="/how-it-works">How it works</a>
-                <a href="/privacy-policy">Privacy policy</a>
-            </div>
-            <div className="link-column">
-                <a href="/our-mission">Our mission</a>
-                <a href="/blog">Blog</a>
-            </div>
-            <div className="link-column">
-                <a href="/shipping-policy">Shipping Policy</a>
-                <a href="/refund-policy">Refund Policy</a>
-            </div>
-            </div>
-
-            <button className="contact-button">CONTACT US</button>
+      <div className="footer-bottom-bar">
+        <p className="copyright-text">© 2025 barefootinthegarden. All Rights Reserved.</p>
+        <div className="footer-social-icons">
+          <a href="#" aria-label="Twitter"><FaTwitter /></a>
+          <a href="#" aria-label="Instagram"><FaInstagram /></a>
+          <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+          <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
         </div>
-
-        <div className="footer-divider"></div>
-
-        <div className="social-icons">
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaLinkedinIn /></a>
-        </div>
-        </div>
+      </div>
     </footer>
   );
 };

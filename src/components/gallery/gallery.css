@@ -1,92 +1,135 @@
-/* Your Stay, Your Style, Your Home Section */
+/* --- Gallery Section (Your Stay, Your Style) --- */
+
 .your-stay-section {
-    padding-top: 30px;
-    background-color: #f6f8f5;
+  padding: 4rem 1.5rem; /* Add horizontal padding for mobile */
+  background-color: #f6f8f5;
+  width: 100%;
+}
+
+.your-stay-content-wrapper {
+  max-width: 72rem; /* max-w-6xl */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column; /* Mobile-first: default to column */
+  align-items: center;
+  text-align: center; /* Center text on mobile */
+  gap: 3rem; /* Reduced gap for mobile */
+}
+
+.section-title {
+  font-size: 1.8rem; /* Adjusted for mobile */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--darkBrown-color);
+}
+
+.section-description {
+  font-size: 1rem; /* Adjusted for mobile */
+  color: #4b5563;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.section-description:last-child {
+  margin-bottom: 0;
+}
+
+.highlight {
+  font-weight: 600;
+}
+
+.your-stay-images {
+  width: 100%;
+  max-width: 400px; /* Constrain width on mobile for a tighter stack */
+  height: 350px; /* Reduced height for mobile */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-card {
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08); /* Softer shadow */
+  width: 90%; /* Use percentage for responsiveness */
+  height: 75%;
+  object-fit: cover;
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Adjusted stacking effect for mobile */
+.your-stay-images .image-card:nth-child(1) {
+  z-index: 3;
+  transform: rotate(-8deg) translateX(-20px);
+}
+
+.your-stay-images .image-card:nth-child(2) {
+  z-index: 2;
+  transform: scale(0.95); /* Slightly smaller middle card */
+}
+
+.your-stay-images .image-card:nth-child(3) {
+  z-index: 1;
+  transform: rotate(8deg) translateX(20px);
+}
+
+
+/* --- Tablet Styles --- */
+@media (min-width: 768px) {
+  .your-stay-section {
+      padding: 5rem 2rem;
   }
-  
+
   .your-stay-content-wrapper {
-    max-width: 72rem; /* max-w-6xl */
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column; /* Default to column for smaller screens */
-    align-items: center;
-    gap: 10rem; /* gap-8 */
+      flex-direction: row; /* Switch to side-by-side layout */
+      align-items: center; /* Vertically center content */
+      text-align: left; /* Align text to the left */
+      gap: 4rem;
   }
-  
-  /* Adjust for larger screens to make content and images row-wise */
-  @media (min-width: 768px) { /* md breakpoint */
-    .your-stay-content-wrapper {
-      flex-direction: row; /* flex-row */
-      /* Key change: Align items to the center vertically within the flex container */
-      align-items: center;
-    }
-  
-    .your-stay-text-content {
-      flex: 1;
-    }
-  
-    .your-stay-images {
-      width: 50%; /* md:w-1/2 */
-    }
+
+  .your-stay-text-content {
+      flex: 1; /* Allow text content to take up half the space */
   }
-  
-  .section-title {
-    font-size: 2.2rem; /* text-3xl */
-    font-weight: 700; /* font-bold */
-    margin-bottom: 1rem; /* mb-4 */
-    color: var(--darkBrown-color);
-  }
-  
-  .section-description {
-    font-size: 1.125rem; /* text-lg */
-    color: #4b5563; /* text-gray-700 */
-    margin-bottom: 1rem; /* mb-4 */
-    font-weight: 400;
-  }
-  
-  .section-description:last-child {
-    margin-bottom: 0; /* Remove margin from last paragraph */
-  }
-  
-  .highlight {
-    font-weight: 600; /* font-semibold */
-  }
-  
+
   .your-stay-images {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    position: relative;
-    /* Adjust height if necessary, ensuring it's sufficient for your desired stack */
-    height: 500px;
-    flex: 1; /* Allow it to take available space */
-    /* Key change: Use flexbox for internal vertical centering of the stacked images */
-    display: flex;
-    justify-content: center; /* Center horizontally (if elements were inline) */
-    align-items: center; /* Center vertically for its children (image cards) */
+      flex: 1; /* Allow image container to take up the other half */
+      height: 450px;
+      max-width: none; /* Remove mobile width constraint */
   }
-  
-  .image-card {
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    width: 100%;
-    /* Key change: Set a fixed height relative to the parent for consistent sizing */
-    height: 70%;
-    object-fit: cover;
-    position: absolute; /* Keep absolute for stacking */
-    /* Remove top: 0; left: 0; as flexbox will handle initial positioning, then transform will offset */
+
+  .section-title {
+      font-size: 2.2rem;
   }
-  
-  /* Adjust individual image positions for stacking effect */
+
+  .section-description {
+      font-size: 1.125rem;
+  }
+
+  /* Restore original stacking effect for larger screens */
   .your-stay-images .image-card:nth-child(1) {
-    z-index: 2;
-    /* Apply transforms for visual offset from the center point */
-    transform: translateY(-20px) translateX(-10px); /* Adjust to center the group, then offset */
+      transform: rotate(-10deg) translateX(-40px) translateY(-20px);
   }
-  
+
   .your-stay-images .image-card:nth-child(2) {
-    z-index: 1;
-    /* Apply transforms for visual offset from the center point */
-    transform: translateY(20px) translateX(10px) scale(0.9) rotate(5deg);
+      transform: scale(1.05); /* Make middle card slightly larger */
   }
+
+  .your-stay-images .image-card:nth-child(3) {
+      transform: rotate(10deg) translateX(40px) translateY(20px);
+  }
+}
+
+
+/* --- Desktop Styles --- */
+@media (min-width: 1024px) {
+  .your-stay-content-wrapper {
+      gap: 6rem; /* Increase gap for more whitespace */
+  }
+
+  .your-stay-images {
+      height: 500px; /* Increase height for desktop */
+  }
+}

@@ -1,0 +1,195 @@
+/* --- Main Container --- */
+.contact-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #fbece2; /* beige */
+    padding: 150px 5rem;
+  }
+  
+  .contact-page-container {
+    width: 100%;
+    max-width: max-content;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --- Form Section (Left) --- */
+  .contact-form-section {
+    flex: 1.2; /* Give more space to the form */
+    padding: 3rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-header h2 {
+    color: #07553d; /* primary-color */
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .form-header p {
+    color: #7a593e; /* darkBrown-color */
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #4d2b22; /* brown */
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e0d1c4;
+    border-radius: 8px;
+    background-color: #fdfaf7;
+    color: #4d2b22;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #c3a25d; /* secondary-color */
+    box-shadow: 0 0 8px rgba(195, 162, 93, 0.3);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  .form-submit-button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #07553d; /* primary-color */
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+  }
+  
+  .form-submit-button:hover {
+    background-color: #054531; /* Darker shade of primary */
+    transform: translateY(-3px);
+  }
+  
+  
+  /* --- Info Section (Right) --- */
+  .contact-info-section {
+    flex: 1;
+    background-color: #07553d; /* primary-color */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-info-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+  }
+  
+  .contact-details {
+    padding: 2.5rem;
+    color: #fbece2; /* beige */
+  }
+  
+  .contact-details h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: #fef191; /* last-color */
+    border-bottom: 1px solid #c3a25d; /* secondary-color */
+    padding-bottom: 0.75rem;
+  }
+  
+  .contact-details p {
+    margin: 0.5rem 0;
+    line-height: 1.8;
+  }
+  
+  .contact-details strong {
+    color: #c3a25d; /* secondary-color */
+  }
+  
+  /* --- Responsive Media Queries --- */
+  
+  /* Tablet Devices */
+  @media (max-width: 992px) {
+    .contact-page-container {
+      flex-direction: column;
+    }
+  
+    .contact-form-section {
+      padding: 2.5rem;
+    }
+  
+    .contact-info-section {
+      flex-direction: row; /* Side-by-side on tablet */
+      align-items: center;
+    }
+  
+    .contact-info-image {
+      width: 50%;
+      height: 100%;
+    }
+    
+    .contact-details {
+      width: 50%;
+    }
+  }
+  
+  /* Mobile Devices */
+  @media (max-width: 768px) {
+    .contact-page-wrapper {
+      padding: 120px 2rem;
+    }
+    
+    .contact-form-section {
+      padding: 2rem 1.5rem;
+    }
+  
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+    
+    .contact-info-section {
+      flex-direction: column; /* Stack on mobile */
+    }
+    
+    .contact-info-image {
+      width: 100%;
+      height: 250px; /* Fixed height for mobile */
+    }
+    
+    .contact-details {
+      width: 100%;
+      padding: 2rem 1.5rem;
+    }
+  }
+  

@@ -1,35 +1,47 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Although not used in the final version, good to keep if you switch back to internal links
 import './offer.css';
-
 import airbnbImage from '/images/airbnb.jpg';
 import cafeImage from '/images/cafe.jpg';
 import vendingMachinesImage from '/images/vending-machines.jpg';
+import livingShowroomImage from '/images/airbnb.jpg';
 
 const offerData = [
   {
-    title: "AirBnb",
+    title: "The Stay",
     bgColor: "#F8F9FA",
     textColor: "#2d3748",
     borderColor: "#4a5568",
-    imageUrl: airbnbImage, // Use the imported image variable
+    imageUrl: airbnbImage,
+    url: '/stay'
   },
   {
-    title: "Cafe",
+    title: "The Cafe",
     bgColor: "#F1EDE7",
     textColor: "#2d3748",
     borderColor: "#4a5568",
-    imageUrl: cafeImage, // Use the imported image variable
+    imageUrl: cafeImage,
+    url: '/cafe'
   },
   {
     title: "Vending machines",
     bgColor: "#D1B9A8",
     textColor: "#2d3748",
     borderColor: "#4a5568",
-    imageUrl: vendingMachinesImage, // Use the imported image variable
+    imageUrl: vendingMachinesImage,
+    url: '/vend'
+  },
+  {
+    title: "The Living Showroom",
+    bgColor: "#E2E8F0",
+    textColor: "#2d3748",
+    borderColor: "#4a5568",
+    imageUrl: livingShowroomImage,
+    url: 'https://crafted-comforts-ghy.netlify.app/'
   },
 ];
-// The OfferCard component remains the same
-const OfferCard = ({ title, bgColor, textColor, borderColor, imageUrl }) => {
+
+const OfferCard = ({ title, bgColor, textColor, borderColor, imageUrl, url }) => {
   return (
     <div
       className="offer-card"
@@ -42,19 +54,24 @@ const OfferCard = ({ title, bgColor, textColor, borderColor, imageUrl }) => {
         >
           {title}
         </h2>
-        <button
+        <a
+          href={url}
           className="offer-button"
           style={{
             borderColor: borderColor,
             color: textColor,
+            textDecoration: 'none',
           }}
+          // For external links, it's good practice to add these attributes
+          target={url.startsWith('http') ? '_blank' : '_self'}
+          rel={url.startsWith('http') ? 'noopener noreferrer' : ''}
         >
           <span className='offer-button-text'>Know More</span>
-        </button>
+        </a>
       </div>
       <div className="offer-image-wrapper">
         <img
-          src={imageUrl} // This will now be your local image path
+          src={imageUrl}
           alt={title}
           className="offer-image"
           onError={(e) => {
@@ -67,7 +84,6 @@ const OfferCard = ({ title, bgColor, textColor, borderColor, imageUrl }) => {
   );
 };
 
-// The Offer component remains the same
 const Offer = () => {
   return (
     <div className="offer-container">
@@ -79,11 +95,7 @@ const Offer = () => {
         {offerData.map((offer, index) => (
           <OfferCard
             key={index}
-            title={offer.title}
-            bgColor={offer.bgColor}
-            textColor={offer.textColor}
-            borderColor={offer.borderColor}
-            imageUrl={offer.imageUrl}
+            {...offer} // Pass all properties from the offer object
           />
         ))}
       </div>

@@ -1,19 +1,62 @@
-// Contact.jsx
 import React, { useState } from 'react';
 import './contact.css';
 import img4 from '/images/img4.jpg'; // Ensure this path is correct
 
 const Contact = () => {
     const [inquiryType, setInquiryType] = useState('General');
+    const [status, setStatus] = useState('Submit'); // State for the submit button text
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted!');
+        setStatus('Sending...'); // Update button text to show loading
+
+        const formData = new FormData(e.target);
+        formData.append("inquiryType", inquiryType); // Add inquiry type to form data
+
+        try {
+            const response = await fetch('https://formspree.io/f/xnnzwkvq', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setStatus('Message Sent!');
+                e.target.reset(); // Clear the form
+                setInquiryType('General'); // Reset inquiry type
+
+                // Reset the button status after 3 seconds
+                setTimeout(() => {
+                    setStatus('Submit');
+                }, 3000);
+
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    const errorMessages = data.errors.map(error => error.message).join(', ');
+                    setStatus(`Error: ${errorMessages}`);
+                } else {
+                    setStatus('Oops! There was a problem.');
+                }
+                // Reset button status after showing error
+                setTimeout(() => {
+                    setStatus('Submit');
+                }, 4000);
+            }
+        } catch (error) {
+            setStatus('Oops! There was a problem.');
+            // Reset button status after showing error
+            setTimeout(() => {
+                setStatus('Submit');
+            }, 4000);
+        }
     };
 
     return (
-        <section className="contact-section" style={{ backgroundImage: `url(${img4})` }}> {/* Apply background image here */}
-            <div className="contact-overlay"> {/* This div will create a consistent overlay for the whole section */}
+        <section className="contact-section" style={{ backgroundImage: `url(${img4})` }}>
+            <div className="contact-overlay">
                 <div className="contact-left">
                     <div className="contact-content">
                         <div className='contact-info-heading'>
@@ -42,7 +85,7 @@ const Contact = () => {
                             </div>
                             <div className="contact-email">
                                 <h3>Email</h3>
-                                <p>info@craftedcomfort.in</p>
+                                <p>info@barefootinthegarden.in</p>
                             </div>
                             <div className="contact-phone">
                                 <h3>Contact</h3>
@@ -52,18 +95,18 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <div className="contact-right"> {/* No specific style here, background handled by CSS */}
+                <div className="contact-right">
                     <h2>Tell Us What You Need</h2>
                     <p>Our team is ready to assist you with every detail, big or small.</p>
 
                     <form onSubmit={handleSubmit} className="contact-form">
                         <div className="form-row">
-                            <input type="text" placeholder="First Name" required />
-                            <input type="text" placeholder="Last Name" required />
+                            <input name="firstName" type="text" placeholder="First Name" required />
+                            <input name="lastName" type="text" placeholder="Last Name" required />
                         </div>
-                      
+
                         <div className="form-row">
-                            <input type="email" placeholder="Email Address" required />
+                            <input name="email" type="email" placeholder="Email Address" required />
                         </div>
 
                         <div className="form-type-inquiry">
@@ -83,10 +126,10 @@ const Contact = () => {
                         </div>
 
                         <div className="form-row full-width">
-                            <textarea placeholder="Message (Optional)"></textarea>
+                            <textarea name="message" placeholder="Message (Optional)"></textarea>
                         </div>
 
-                        <button type="submit" className="submit-button">Submit</button>
+                        <button type="submit" className="submit-button">{status}</button>
                     </form>
                 </div>
             </div>
