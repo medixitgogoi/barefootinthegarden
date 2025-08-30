@@ -7,6 +7,7 @@ import img2 from '/images/img2.jpg';
 import img3 from '/images/img3.jpg';
 import img4 from '/images/img4.jpg';
 import img5 from '/images/img5.jpg';
+import { Link } from 'react-router-dom';
 
 // It's good practice to define icons as components for reusability and clarity.
 const SocialIcon = ({ href, children }) => (
@@ -100,9 +101,9 @@ const About = () => {
           <p className="footer-description">
             Your journey into thoughtful, sustainable design begins here. Schedule a visit to walk through our spaces, or book a stay to fully immerse yourself.
           </p>
-          <a href="/contact" className="footer-cta">
+          <Link to="/contact" className="footer-cta">
             Enquire now
-          </a>
+          </Link>
           <div className="footer-socials">
             <SocialIcon href="https://facebook.com">
               <FacebookIcon />

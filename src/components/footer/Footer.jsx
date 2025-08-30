@@ -2,6 +2,7 @@ import React from 'react';
 import './footer.css';
 import logo from '/images/logo.png';
 import { FaTwitter, FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -21,19 +22,19 @@ const Footer = () => {
         {/* Column 2: Services */}
         <div className="footer-column links">
           <h3 className="footer-heading">Services</h3>
-          <a href="/stay">The Stay</a>
-          <a href="/cafe">The Cafe</a>
-          <a href="/vend">Vending Machines</a>
+          <Link to='/stay'>The Stay</Link>
+          <Link to='/cafe'>The Cafe</Link>
+          <Link to='/vend'>Vending Machines</Link>
+          {/* <a href="/cafe">The Cafe</a>
+          <a href="/vend">Vending Machines</a> */}
           <a href="https://craftedcomfort.in/" target="_blank" rel="noopener noreferrer">The Living Showroom</a>
         </div>
 
         {/* Column 3: Company */}
         <div className="footer-column links">
           <h3 className="footer-heading">Company</h3>
-          <a href="/about">About Us</a>
-          <a href="/contact">Contact</a>
-          {/* <a href="#">Careers</a>
-          <a href="#">Press</a> */}
+          <Link to="/about">About Us</Link>
+          <Link to="/contact">Contact</Link>
         </div>
       </div>
 
